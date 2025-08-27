@@ -1,8 +1,12 @@
 vim.g.mapleader = " "
---            mode|   keybind  |  command
-vim.keymap.set("n", "<leader>q", vim.cmd.Ex)
 
-vim.keymap.set("n", "<leader>so", ":source<CR>")
+--  keymap.set(mode, keybind, command)
+vim.keymap.set("n", "<leader>q", "<Cmd>edit %:p:h<CR>")
+vim.keymap.set("n", "<leader>so", "<Cmd>source<CR>")
+
+vim.keymap.set("n", " N", function()
+    return ":e " .. vim.fn.expand("%:p:h") .. "/"
+end, {expr = true})
 
 vim.keymap.set("n", "gA", "$")
 vim.keymap.set("n", "gI", "_")

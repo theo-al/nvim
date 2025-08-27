@@ -1,3 +1,9 @@
 [submodule "pack/plugins/start/gitsigns.nvim"]
 	path = pack/plugins/start/gitsigns.nvim
 	url = https://github.com/lewis6991/gitsigns.nvim
+[submodule "pack/plugins/start/oil.nvim"]
+	path = pack/plugins/start/oil.nvim
+	url = https://github.com/stevearc/oil.nvim.git
+[submodule "pack/plugins/start/oil-git.nvim"]
+	path = pack/plugins/start/oil-git.nvim
+	url = https://github.com/benomahony/oil-git.nvim.git
