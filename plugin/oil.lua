@@ -13,16 +13,11 @@ require("oil").setup({
     --"mtime",
   },
 
-  -- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
-  delete_to_trash = false,
+  -- Send deleted files to the trash instead of permanently deleting them
+  delete_to_trash = false, --  (:help oil-trash)
 
   -- Selecting a new/moved/renamed file will prompt you to save changes first
   prompt_save_on_select_new_entry = true, -- (:help prompt_save_on_select_new_entry)
-
-  -- Oil will automatically delete hidden buffers after this delay
-  -- You can set the delay to false to disable cleanup entirely
-  -- Note that the cleanup process only starts when none of the oil buffers are currently displayed
-  cleanup_delay_ms = 2000,
 
   lsp_file_methods = {
     -- Enable or disable LSP file operations
@@ -50,13 +45,13 @@ require("oil").setup({
     ["<C-s>t"] = { "actions.select", opts = { tab = true } },
 
     ["<C-h>"] = { "actions.toggle_hidden" },
-    ["<C-c>"] = { "actions.close",   mode = "n" },
     ["<C-p>"] = { "actions.preview", mode = "n" },
     ["<F5>"]  = { "actions.refresh", mode = "n" },
 
-    ["<leader>q"] = { "actions.parent",   mode = "n" },
-    ["-"]         = { "actions.open_cwd", mode = "n" },
-    ["~"]         = { "actions.cd",       mode = "n" }, -- opts = { scope = "tab" }
+    ["<leader>q"] = { "actions.close",    mode = "n" },
+    ["~"]         = { "actions.parent",   mode = "n" },
+    ["=="]        = { "actions.cd",       mode = "n" },
+    ["--"]        = { "actions.open_cwd", mode = "n" },
 
     ["gx"]  = { "actions.open_external" },
     ["gs"]  = { "actions.change_sort",  mode = "n" },
@@ -130,7 +125,7 @@ require("oil").setup({
     get_win_title = nil, --: function(winid: int): str
     preview_split = "auto", --: "auto", "left", "right", "above", "below".
 
-    -- This is the config that will be passed to nvim_open_win and define the layout
+    -- This result will be passed to nvim_open_win and define the layout
     override = function(conf) return conf end,
   },
 })
