@@ -1,3 +1,5 @@
+local border = vim.o.winborder
+
 require("oil").setup({
   -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`) if true
   default_file_explorer = true,
@@ -93,39 +95,30 @@ require("oil").setup({
  
   -- Configuration for the floating SSH window
   ssh = {
-    border = "rounded",
+    border = border,
   },
 
   -- Configuration for the floating action confirmation window
   confirmation = {
+    border = border,
+
     -- dim := integer (num chars) | float between 0 and 1 (%)
-    max_width = 0.9,         --: [ dim, dim ], takes the lesser
-    min_width = { 40, 0.4 }, --: [ dim, dim ], takes the lesser
-    width = nil, --: optional dim (exact width of the preview window)
-
-    max_height = 0.9,       --: [ dim, dim ], takes the lesser
-    min_height = { 5, 0.1 },--: [ dim, dim ], takes the lesser
-    height = nil,--: optional dim (exact height of the preview window)
-
-    border = "rounded",
-    win_options = { winblend = 0, },
+    width  = 20, --: optional dim (exact width of the window)
+    height = 2,  --: optional dim (exact height of the window)
   },
 
   -- Configuration for the floating window in oil.open_float
   float = {
+    border = border,
+
     -- dim := integer (num chars) | float between 0 and 1 (%)
-    padding    = 2, --: ?
-    max_width  = 0, --: dim
-    max_height = 0, --: dim
+    padding = 0.2 , --: dim, dim
 
-    border = "rounded",
-    win_options = { winblend = 0, },
+    max_width  = 0.8,         --: [ dim, dim ], takes the lesser
+    min_width  = { 40, 0.4 }, --: [ dim, dim ], takes the lesser
+    max_height = 0.9,       --: [ dim, dim ], takes the lesser
+    min_height = { 5, 0.1 },--: [ dim, dim ], takes the lesser
 
-    -- override the oil buffers window title with function
-    get_win_title = nil, --: function(winid: int): str
     preview_split = "auto", --: "auto", "left", "right", "above", "below".
-
-    -- This result will be passed to nvim_open_win and define the layout
-    override = function(conf) return conf end,
   },
 })

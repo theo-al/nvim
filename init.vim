@@ -7,8 +7,10 @@ set number
 set relativenumber
 
 " colors
-set notermguicolors
 colorscheme habamax
+set notermguicolors
+highlight FloatBorder ctermbg=NONE ctermfg=NONE
+highlight NormalFloat ctermbg=NONE ctermfg=NONE
 
 " tabs
 set tabstop=4
