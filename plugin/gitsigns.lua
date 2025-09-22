@@ -3,6 +3,11 @@ vim.cmd([[
   :highlight GitSignsChange ctermbg=NONE ctermfg=blue
   :highlight GitSignsDelete ctermbg=NONE ctermfg=red
   :highlight SignColumn     ctermbg=NONE ctermfg=NONE
+
+  " word diff
+  :hi GitSignsAddInline    ctermbg=bg       ctermfg=green cterm=underline
+  :hi GitSignsDeleteInline ctermbg=darkred  ctermfg=white cterm=underline
+  :hi GitSignsChangeInline ctermbg=darkblue ctermfg=white cterm=underline
 ]])
 
 require('gitsigns').setup {
@@ -32,15 +37,4 @@ require('gitsigns').setup {
   sign_priority = 6,
 
   update_debounce = 100,
-  status_formatter = nil, -- Use default
-  max_file_length = 40000, -- Disable if file is longer than this (in lines)
-
-  preview_config = {
-    -- Options passed to nvim_open_win
-    border = 'single',
-    style = 'minimal',
-    relative = 'cursor',
-    row = 0,
-    col = 1,
-  },
 }
