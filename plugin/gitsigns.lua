@@ -5,9 +5,9 @@ vim.cmd([[
   :highlight SignColumn     ctermbg=NONE ctermfg=NONE
 
   " word diff
-  :hi GitSignsAddInline    ctermbg=bg       ctermfg=green cterm=underline
-  :hi GitSignsDeleteInline ctermbg=darkred  ctermfg=white cterm=underline
-  :hi GitSignsChangeInline ctermbg=darkblue ctermfg=white cterm=underline
+  :hi GitSignsAddInline    ctermbg=NONE    ctermfg=NONE cterm=italic
+  :hi GitSignsDeleteInline ctermbg=darkred ctermfg=NONE cterm=underline
+  :hi GitSignsChangeInline ctermbg=NONE    ctermfg=NONE cterm=underline
 ]])
 
 require('gitsigns').setup {
