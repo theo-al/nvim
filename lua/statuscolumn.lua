@@ -1,8 +1,8 @@
 local fold = function() return "%C" end
 local sign = function() return "%s" end
 
-local right = function(str) return "%="  end
-local left  = function(str) return "%-=" end
+local right = function() return "%="  end
+local left  = function() return "%-=" end
 
 local v = vim.v
 local absolute_number = function() return v.lnum    end

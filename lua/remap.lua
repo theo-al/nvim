@@ -2,7 +2,7 @@ vim.g.mapleader = " "
 
 --  keymap.set(mode, keybind, command)
 vim.keymap.set("n", "<leader>q", "<Cmd>edit %:p:h<CR>")
-vim.keymap.set("n", "<leader>so", "<Cmd>source<CR>")
+vim.keymap.set("n", "<leader>so", "<Cmd>source $MYVIMRC<CR>")
 
 vim.keymap.set("n", " N", function()
     return ":e " .. vim.fn.expand("%:p:h") .. "/"
