@@ -1,4 +1,7 @@
-local border = vim.o.winborder
+local border = nil
+if vim.fn.exists('+winborder') == 1 then
+    border = vim.o.winborder
+end
 
 require("oil").setup({
   -- Oil will take over directory buffers (e.g. `vim .` or `:e src/`) if true

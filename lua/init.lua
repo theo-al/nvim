@@ -1,5 +1,6 @@
 require "remap"
 require "statuscolumn"
 
-vim.o.undofile = true --! ver de mudar isso pra init.vim
-vim.o.winborder = "double"
+if vim.fn.exists('+winborder') == 1 then
+    vim.o.winborder = "double"
+end

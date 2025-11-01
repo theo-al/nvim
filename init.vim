@@ -1,10 +1,10 @@
-" remaps
-vnoremap <C-c> "+y
-nnoremap <Y> y$
-
-" status column
+" bare minimum
 set number
 set relativenumber
+set undofile
+
+vnoremap <C-c> "+y
+nnoremap <Y> y$
 
 " colors
 colorscheme habamax
@@ -22,24 +22,29 @@ set shiftwidth=0
 set expandtab smarttab smartindent
 
 " terminal
-augroup TermFixes
-  autocmd!
-  autocmd TermOpen * startinsert
-  autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-n>
-  autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
-  autocmd TermOpen * setlocal statuscolumn=
-  autocmd TermOpen * ++once call s:TermNoWrite()
-augroup END
+if has('terminal')
+  augroup TermFixes
+    autocmd!
+    autocmd TermOpen * startinsert
+    autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-n>
+    autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
+    autocmd TermOpen * ++once call s:TermNoWrite()
 
-function! s:TermNoWrite() abort
-  " buffer-local no-op command (must be uppercase)
-  command! -buffer W echohl None | echo "" | echohl None
+    if exists('+statuscolumn')
+      "! mover o que tem aqui pra statuscolumn.lua
+      autocmd TermOpen * setlocal statuscolumn=
+    endif
+  augroup END
 
-  " make :w expand to :W only in this buffer
-  " use cmdmode abbreviation (safer than cnoremap)
-  execute 'iabbrev <buffer> w W'
-  execute 'cabbrev <buffer> w W'
-endfunction
+  function! s:TermNoWrite() abort
+    " buffer-local no-op command (must be uppercase)
+    command! -buffer W echohl None | echo "" | echohl None
+
+    " make :w expand to :W only in this buffer
+    execute 'iabbrev <buffer> w W'
+    execute 'cabbrev <buffer> w W'
+  endfunction
+endif
 
 " source main config
 if has('nvim')
