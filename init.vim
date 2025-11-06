@@ -22,18 +22,13 @@ set shiftwidth=0
 set expandtab smarttab smartindent
 
 " terminal
-if has('terminal')
+if exists(':terminal')
   augroup TermFixes
     autocmd!
     autocmd TermOpen * startinsert
     autocmd TermOpen * tnoremap <buffer> <Esc> <C-\><C-n>
     autocmd TermOpen * setlocal nonumber norelativenumber signcolumn=no
     autocmd TermOpen * ++once call s:TermNoWrite()
-
-    if exists('+statuscolumn')
-      "! mover o que tem aqui pra statuscolumn.lua
-      autocmd TermOpen * setlocal statuscolumn=
-    endif
   augroup END
 
   function! s:TermNoWrite() abort

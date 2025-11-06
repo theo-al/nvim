@@ -1,3 +1,5 @@
+if vim.fn.exists('+statuscolumn') == 0 then return end
+
 local fold = function() return "%C" end
 local sign = function() return "%s" end
 
@@ -32,3 +34,8 @@ function render_statuscol()
 end
 
 vim.o.statuscolumn="%!v:lua.render_statuscol()"
+
+vim.api.nvim_create_autocmd("TermOpen", {
+    group = "TermFixes",
+    callback = function() vim.wo.statuscolumn = "" end,
+})
